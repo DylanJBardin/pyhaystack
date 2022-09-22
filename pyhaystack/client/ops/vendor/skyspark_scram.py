@@ -263,6 +263,7 @@ class SkysparkScramAuthenticateOperation(state.HaystackOperation):
             server_response = response.headers["Authentication-Info"]
             tab_response = server_response.split(",")
             self._auth_token = scram.regex_after_equal(tab_response[0])
+            print(self._auth_token)
             self._key = scram.regex_after_equal(tab_response[1])
             self._auth = "Bearer authToken=%s" % self._auth_token
             self._state_machine.login_done(
